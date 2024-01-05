@@ -51,3 +51,15 @@ if ( ! function_exists( 'raven_blog_setup' ) ) :
 	}
 endif; // raven_blog_setup
 add_action( 'after_setup_theme', 'raven_blog_setup' );
+
+/*----------------------------------------------
+Enqueue Styles
+----------------------------------------------*/
+if ( ! function_exists( 'raven_blog_styles' ) ) :
+    function raven_blog_styles() {
+        // Register Stylesheet
+        wp_enqueue_style( 'raven-blog-style', get_stylesheet_uri(), array(), wp_get_theme()->get('Version'));
+        wp_enqueue_style( 'raven-blog-style-blocks', get_template_directory_uri() . '/assets/css/blocks.css');
+    }
+endif; // raven_blog_styles
+add_action( 'wp_enqueue_scripts', 'raven_blog_styles' );
